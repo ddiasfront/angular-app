@@ -2,7 +2,7 @@
 
 angular.module('searchList').
 component('searchList', {
-  template: "<h2>{{title}}</h2>",
+  template: "<h2>{{title}}</h2><ul><li ng-repeat='search in searchResultz'>{{search.snippet.title}}</li></ul>",
   controller: function($http, $scope) {
 
     const searchForMe = (inputString) => {
@@ -13,8 +13,10 @@ component('searchList', {
 
     const sucessCallBack = (response) => {
       console.log(response);
-
+      let searchResult = response.data.items
+      $scope.searchResultz = searchResult ? searchResult : 'No resultz';
     }
+    
 
     const errorCallBack = ( response) => {
       console.log(response);
