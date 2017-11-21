@@ -13,6 +13,13 @@ VIEW INICIAL E REQUEST INICIAL
         - REQUEST API
         - LISTAR ATÉ NO MAXIMO 10 VÍDEOS
         - INPUTAR OS DETALHES EM SCOPES
+        
+                -- VIDEO URL + ID
+                -- FRAME PEQUENO
+                -- TITULO
+                -- DESCRICAO
+                -- NOME DO CANAL
+                
         - LISTAR VÍDEOS NO VIEW
 
 21/11 - INTEGRAR INPUT DINÂMICO AO REQUEST

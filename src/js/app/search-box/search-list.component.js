@@ -9,10 +9,11 @@ component('searchList', {
       let baseUrl = 'https://www.googleapis.com/youtube/v3/search?part=id&q=skateboard&type=video&maxResults=10&key=AIzaSyDd_sfvQ4NASb-k0oKYAr_g9FZcQILtyKc'
     }
 
-    let baseUrl = 'https://www.googleapis.com/youtube/v3/search?part=id&q=skateboard&type=video&maxResults=10&key=AIzaSyDd_sfvQ4NASb-k0oKYAr_g9FZcQILtyKc'
+    let baseUrl = 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=skateboard&type=video&maxResults=10&key=AIzaSyDd_sfvQ4NASb-k0oKYAr_g9FZcQILtyKc'
 
     const sucessCallBack = (response) => {
       console.log(response);
+
     }
 
     const errorCallBack = ( response) => {
