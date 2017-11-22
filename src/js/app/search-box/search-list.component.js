@@ -2,7 +2,7 @@
 
 angular.module('searchList').
 component('searchList', {
-  template: "<h2>{{title}}</h2><ul><li ng-repeat='search in searchResultz'>{{search.snippet.title}}</li></ul>",
+  templateUrl: '/views/videos.html',
   controller: function(Video, $http, $scope, $location, $routeParams) {
  
     Video.query(function(data) {
