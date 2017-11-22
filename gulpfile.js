@@ -2,10 +2,12 @@ const gulp        = require('gulp');
 const babel = require('gulp-babel');
 const browserSync = require('browser-sync').create();
 const less = require('gulp-less');
+const bytediff = require('gulp-bytediff');
+const rename = require('gulp-rename');
 const ngAnnotate = require('gulp-ng-annotate')
 const watch = require('gulp-watch');
 const concat = require('gulp-concat');
-var plumber = require('gulp-plumber');
+const plumber = require('gulp-plumber');
 const uglify = require('gulp-uglify');
 const minifyCSS = require('gulp-minify-css');
 const sourcemaps = require('gulp-sourcemaps');
@@ -42,9 +44,10 @@ const path = {
 };
 
 gulp.task('app', function() {
-  return gulp.src(['src/js/app/**/app.config.js', 'src/js/app/**/*.module.js', 'src/js/app/**/*.js'])
+  return gulp.src(['src/js/app/**/*.module.js', 'src/js/app/**/app.config.js', 'src/js/app/**/*.js'])
     .pipe(plumber())
     .pipe(concat('app.js', {newLine: ';'}))
+    .pipe(babel({ presets: ['babel-preset-es2015',"babel-preset-es2016", "babel-preset-es2017"].map(require.resolve) }))
     .pipe(ngAnnotate({add: true}))
     .pipe(plumber.stop())
       .pipe(gulp.dest('dist/js/'));
@@ -88,16 +91,15 @@ gulp.task('less', function () {
     .pipe(gulp.dest(path.DIST + '/css'));
 });
 /* concat and compress app scripts */
-gulp.task('js', function () {
-  gulp.src(path.JS)
-  	.pipe(sourcemaps.init())
-		  .pipe(concat('app.js'))
-      .pipe(babel({ presets: ['babel-preset-es2015',"babel-preset-es2016", "babel-preset-es2017"].map(require.resolve) }))
-      .pipe(ngAnnotate())
-      .pipe(uglify())
-      .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
-		.pipe(sourcemaps.write())
-    .pipe(gulp.dest(path.DIST + '/js'));
+gulp.task('js', ['app'], function() {
+  return gulp.src('dist/js/app.js')
+  .pipe(plumber())
+    .pipe(bytediff.start())
+      .pipe(uglify({mangle: true}))
+    .pipe(bytediff.stop())
+    .pipe(rename('app.min.js'))
+  .pipe(plumber.stop())
+  .pipe(gulp.dest('dist/js/'));
 });
 /* copy over markups */
 gulp.task('html', function(){
@@ -119,5 +121,5 @@ gulp.task('watch', function () {
   gulp.watch(path.IMG, ['img']);
 });
 /* defualt */
-var all_tasks = ['css', 'less', 'js', 'html'];
+const all_tasks = ['css', 'less', 'js', 'html'];
 gulp.task('default', all_tasks);
