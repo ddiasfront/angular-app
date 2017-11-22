@@ -4,10 +4,7 @@ angular.module('searchList').
 component('searchList', {
   template: "<h2>{{title}}</h2><ul><li ng-repeat='search in searchResultz'>{{search.snippet.title}}</li></ul>",
   controller: function(Video, $http, $scope) {
-    
-    console.log(Video.query())
-    console.log(Video.get())
-    
+ 
     const searchForMe = (inputString) => {
       let baseUrl = 'https://www.googleapis.com/youtube/v3/search?part=id&q=skateboard&type=video&maxResults=10&key=AIzaSyDd_sfvQ4NASb-k0oKYAr_g9FZcQILtyKc'
     }
@@ -25,7 +22,8 @@ component('searchList', {
       console.log(response);
     }
 
-
+    console.log(Video.query())
+    console.log(Video.get())
     $http.get(baseUrl).then(sucessCallBack, errorCallBack);
     console.log('SEARCH LIST CONTROLLER');
     $scope.title = 'Hello Therez'

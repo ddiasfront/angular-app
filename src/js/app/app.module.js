@@ -1,3 +1,7 @@
 'use strict';
 
-angular.module('intelipost', ['searchList']);
+angular.module('myApp', [
+    'ngRoute',
+    'ngResource',
+    'searchList'
+  ]);
