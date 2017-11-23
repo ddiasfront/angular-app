@@ -25,6 +25,17 @@ angular.module('searchList').component('searchList', {
   templateUrl: '/views/videos.html',
   controller: ["Video", "$http", "$scope", "$location", "$routeParams", function controller(Video, $http, $scope, $location, $routeParams) {
 
+    $scope.searchText = 'skateboard';
+
+    $scope.searchSet = function (newsearchString) {
+      $scope.searchText = newsearchString;
+    };
+
+    $scope.newQuery = function (newsearchText) {
+      $scope.newScopeQuery = Video.query({ word: newsearchText });
+      console.log($scope.newScopeQuery);
+    };
+
     Video.query(function (data) {
       $scope.notFound = true;
       $scope.searchResultz = data.items;
@@ -41,8 +52,7 @@ angular.module('searchList').component('searchList', {
 
 
 angular.module('video').factory('Video', ["$resource", function ($resource) {
-  var url = 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=skateboard&type=video&maxResults=10&key=AIzaSyDd_sfvQ4NASb-k0oKYAr_g9FZcQILtyKc';
-  return $resource(url, {}, {
+  return $resource('https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=/:word/&type=video&maxResults=10&key=AIzaSyDd_sfvQ4NASb-k0oKYAr_g9FZcQILtyKc', { word: '@word' }, {
     query: {
       method: "GET"
       // transformRespone

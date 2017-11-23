@@ -1,1 +1,8 @@
-<h2>{{title}}</h2><ul><li ng-repeat='search in searchResultz'>{{search.snippet.title}}</li></ul>
+<h2>{{title}}</h2>
+<ul>
+  <li ng-repeat='search in searchResultz'>{{search.snippet.title}}</li>
+</ul>
+
+
+<input type="text" ng-model="searchText" ng-Change="searchSet(searchText)">
+<button ng-click="newQuery(searchText)">Request</button>

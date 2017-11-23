@@ -56,10 +56,14 @@ gulp.task('app', function() {
 // Static server
 gulp.task('browser-sync', function() {
   browserSync.init({
-      server: {
-          baseDir: "./src/"
-      }
-  });
+      server: './dist/',
+      logLevel: 'alert',
+      logPrefix: 'BS DEBUG:'
+  }); 
+  gulp.watch("./src/js/**/*.js", ['default']);
+  gulp.watch("./src/**/*.less", ['default']);
+  gulp.watch("./src/**/*.html", ['default']);
+  gulp.watch("./dist/**/*.html").on('change', browserSync.reload);
 });
 
 
