@@ -12,8 +12,10 @@ component('searchList', {
     }
 
     $scope.newQuery = function(newsearchText){
-      $scope.newScopeQuery = Video.query({word: newsearchText});
-      console.log($scope.newScopeQuery);
+      $scope.pica = Video.query({word: newsearchText});
+      $scope.pica.$promise.then(function(result) {
+        console.log(result.items);
+      })
     }
 
     Video.query(function(data) {

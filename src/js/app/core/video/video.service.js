@@ -10,7 +10,7 @@ angular.module('video').
         //interceptor
       },
       get:{
-        method: "GET",
+        method: "GET"
       }
     })
   });
