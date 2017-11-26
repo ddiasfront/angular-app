@@ -1,18 +1,22 @@
-<h1>{{title}}</h1>
+<div class="video-wrapper">
 
-<h2>{{subtitle}}</h2>
+  <h1>{{title}}</h1>
 
-<ul>
-  <li ng-repeat='found in YoutubeSearchResults'>{{found.snippet.title}}</li>
-</ul>
+  <h2>{{subtitle}}</h2>
 
-<ul ng-if="TicketMasterAttraction">
-  <li >{{TicketMasterAttraction.externalLinks.facebook[0].url}}</li>
-  <li >{{TicketMasterAttraction.externalLinks.homepage[0].url}}</li>
-  <li >{{TicketMasterAttraction.externalLinks.instagram[0].url}}</li>
-  <li >{{TicketMasterAttraction.externalLinks.itunes[0].url}}</li>
-  <li >{{TicketMasterAttraction.externalLinks.youtube[0].url}}</li>
-</ul>
+  <ul class="youtube-video-list-names animate-show-hide" ng-show="YoutubeSearchResults">
+    <li ng-show="YoutubeSearchResults" ng-repeat='found in YoutubeSearchResults'>{{found.snippet.title}}</li>
+  </ul>
 
-<input type="text" ng-model="searchText" ng-Change="searchSet(searchText)">
-<button ng-click="newQuery(searchText)">Request</button>
+  <ul class="base-opacity" ng-show="ShowSocial">
+    <li ng-show="ShowSocial">{{TicketMasterAttractionLinksFacebook}}</li>
+    <li ng-show="ShowSocial">{{TicketMasterAttractionLinksHomepage}}</li>
+    <li ng-show="ShowSocial">{{TicketMasterAttractionLinksInstagram}}</li>
+    <li ng-show="ShowSocial">{{TicketMasterAttractionLinksItunes}}</li>
+    <li ng-show="ShowSocial">{{TicketMasterAttractionLinksYoutube}}</li>
+  </ul>
+
+  <input type="text" ng-model="searchText" ng-Change="searchSet(searchText)">
+  <button ng-click="newQuery(searchText)">Request</button>
+
+</div>
