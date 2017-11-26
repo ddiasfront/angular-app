@@ -71,6 +71,7 @@ angular.module('searchList').component('searchList', {
           $scope.TicketMasterAttractionLinksInstagram = result._embedded.attractions[0].externalLinks.instagram[0].url;
           $scope.TicketMasterAttractionLinksItunes = result._embedded.attractions[0].externalLinks.itunes[0].url;
           $scope.TicketMasterAttractionLinksYoutube = result._embedded.attractions[0].externalLinks.youtube[0].url;
+          console.log(result._embedded);
           if ($scope.TicketMasterAttractionLinksFacebook || $scope.TicketMasterAttractionLinksHomepage || $scope.TicketMasterAttractionLinksInstagram || $scope.TicketMasterAttractionLinksItunes || $scope.TicketMasterAttractionLinksYoutube) {
             $scope.ShowSocial = true;
           } else {
