@@ -4,17 +4,94 @@
 
   <h2>{{subtitle}}</h2>
 
-  <ul class="youtube-video-list-names animate-show-hide" ng-show="YoutubeSearchResults">
-    <li ng-show="YoutubeSearchResults" ng-repeat='found in YoutubeSearchResults'>{{found.snippet.title}}</li>
-  </ul>
+    <md-content class="search-top" layout-padding>
+        
+            <div  layout="row" layout-align="space-between center" flex>
+                <md-input-container>
+                    <label>Digite o nome da banda</label>
+                    <input class="searchInput" type="text" ng-model="searchText" ng-Change="searchSet(searchText)">
+                  </md-input-container>
+      
+                  <md-button class="btn1" ng-click="newQuery(searchText)">Pesquisar</md-button>
+            </div>
 
-  <ul class="base-opacity" ng-show="ShowSocial">
-    <li ng-show="ShowSocial">{{TicketMasterAttractionLinksFacebook}}</li>
-    <li ng-show="ShowSocial">{{TicketMasterAttractionLinksHomepage}}</li>
-    <li ng-show="ShowSocial">{{TicketMasterAttractionLinksInstagram}}</li>
-    <li ng-show="ShowSocial">{{TicketMasterAttractionLinksItunes}}</li>
-    <li ng-show="ShowSocial">{{TicketMasterAttractionLinksYoutube}}</li>
-  </ul>
+        
+          </md-content>
+        
+<!-- 
+  <ul class="youtube-video-list-names animate-show-hide" ng-show="YoutubeSearchResults" >
+    <li ng-show="YoutubeSearchResults" ng-repeat='found in YoutubeSearchResults'>{{found.snippet.title}}</li>
+  </ul> -->
+<!-- 
+  <md-grid-list
+  class="youtube-video-list-names animate-show-hide" ng-show="YoutubeSearchResults" 
+  md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
+  md-row-height-gt-md="1:1" md-row-height="2:2"
+  md-gutter="12px" md-gutter-gt-sm="8px" >
+
+    <md-grid-tile 
+    ng-show="YoutubeSearchResults" ng-repeat='found in YoutubeSearchResults'
+    class="gray"
+      md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
+    <md-grid-tile-footer>
+      <h3>{{found.snippet.title}}</h3>
+    </md-grid-tile-footer>
+    </md-grid-tile>
+
+
+  </md-grid-list> -->
+
+  <md-toolbar>
+      <div class="md-toolbar-tools">
+
+        <md-button  ng-show="ShowSocial" aria-label="SOCIAL MEDIA">
+          Social Media: 
+        </md-button>
+
+        <md-truncate style="position: absolute; left: 90px; right: 170px; top: 13px; bottom: 13px;"></md-truncate>
+
+        <span flex></span>
+    
+        <md-button ng-show="ShowSocial" class="md-fab md-mini md-primary md-hue-2" href="{{TicketMasterAttractionLinksFacebook}}"></md-button>
+        <md-button ng-show="ShowSocial" class="md-fab md-mini md-primary md-hue-2" href="{{TicketMasterAttractionLinksHomepage}}"><i class="material-icons md-light">people</i></md-buttonli>
+        <md-button ng-show="ShowSocial" class="md-fab md-mini md-primary md-hue-2" href="{{TicketMasterAttractionLinksInstagram}}">{{TicketMasterAttractionLinksInstagram}}</md-button>
+        <md-button ng-show="ShowSocial" class="md-fab md-mini md-primary md-hue-2" href="{{TicketMasterAttractionLinksItunes}}"><i class="material-icons">audiotrack</i></md-button>
+        <md-button ng-show="ShowSocial" class="md-fab md-mini md-primary md-hue-2" href="{{TicketMasterAttractionLinksYoutube}}">{{TicketMasterAttractionLinksYoutube}}</md-button>
+
+        <md-button class="md-fab md-mini" aria-label="Favorite">
+          <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+  <md-content layout-padding>
+      <md-grid-list
+      class="youtube-video-list-names animate-show-hide" ng-show="YoutubeSearchResults" 
+          md-cols-gt-md="2" md-cols="1" md-cols-md="2"
+          md-row-height-gt-md="2:1" md-row-height="2:1"
+          md-gutter-gt-md="16px" md-gutter-md="8px" md-gutter="4px">
+        <md-grid-tile
+        md-cols-gt-sm="12"
+        ng-show="YoutubeSearchResults" ng-repeat='found in YoutubeSearchResults'>
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{found.snippet.title}}</span>
+                <span class="md-subhead"></span>
+              </md-card-title-text>
+              <md-card-title-media>
+                <div class="md-media-lg card-media"></div>
+              </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button>Action 1</md-button>
+              <md-button>Action 2</md-button>
+            </md-card-actions>
+          </md-card>
+            <h3></h3>
+        </md-grid-tile>
+      </md-grid-list>
+    </md-content>
 
   <input type="text" ng-model="searchText" ng-Change="searchSet(searchText)">
   <button ng-click="newQuery(searchText)">Request</button>

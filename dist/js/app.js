@@ -1,6 +1,6 @@
 'use strict';
 
-var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngAnimate', 'searchList']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngAnimate', 'ngMaterial', 'searchList']);
 
 ;'use strict';
 
