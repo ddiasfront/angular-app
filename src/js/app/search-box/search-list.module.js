@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('searchList', ["video"]);
+angular.module('searchList', ["video","ticketmaster"]);

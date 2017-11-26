@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/ddiasfront/job-frontend-developer.git",
+  "scripts": {
+    "dev": "gulp && gulp browser-sync"
+  },
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.26.0",

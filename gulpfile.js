@@ -116,14 +116,6 @@ gulp.task('img', function(){
     .pipe(imagemin())
     .pipe(gulp.dest(path.DIST + '/img'));
 });
-/* watch all changes */
-gulp.task('watch', function () {
-  gulp.watch(path.LESS_ALL, ['less']);
-  gulp.watch(path.VENDOR, ['vendor']);
-  gulp.watch(path.JS, ['js']);
-  gulp.watch(path.HTML, ['html']);
-  gulp.watch(path.IMG, ['img']);
-});
 /* defualt */
 const all_tasks = ['css', 'less', 'js', 'html'];
 gulp.task('default', all_tasks);

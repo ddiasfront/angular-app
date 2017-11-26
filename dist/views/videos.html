@@ -1,8 +1,18 @@
-<h2>{{title}}</h2>
+<h1>{{title}}</h1>
+
+<h2>{{subtitle}}</h2>
+
 <ul>
-  <li ng-repeat='search in searchResultz'>{{search.snippet.title}}</li>
+  <li ng-repeat='found in YoutubeSearchResults'>{{found.snippet.title}}</li>
 </ul>
 
+<ul ng-if="TicketMasterAttraction">
+  <li >{{TicketMasterAttraction.externalLinks.facebook[0].url}}</li>
+  <li >{{TicketMasterAttraction.externalLinks.homepage[0].url}}</li>
+  <li >{{TicketMasterAttraction.externalLinks.instagram[0].url}}</li>
+  <li >{{TicketMasterAttraction.externalLinks.itunes[0].url}}</li>
+  <li >{{TicketMasterAttraction.externalLinks.youtube[0].url}}</li>
+</ul>
 
 <input type="text" ng-model="searchText" ng-Change="searchSet(searchText)">
 <button ng-click="newQuery(searchText)">Request</button>
