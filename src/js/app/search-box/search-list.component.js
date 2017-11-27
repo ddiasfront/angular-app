@@ -4,6 +4,8 @@ angular.module('searchList').
 component('searchList', {
   templateUrl: '/views/videos.html',
   controller: function(Video, Master, $http, $scope, $location, $routeParams) {
+
+    
  
     // const Querier = (ModuleFactory, SearchParameter) => {
     //   debugger
@@ -15,12 +17,13 @@ component('searchList', {
     //   // }) 
 
     //Initial Scope
-    $scope.title = 'Search for band videos'
-    $scope.subtitle = 'The Band Fans Watcher for 2017'
+    $scope.title = 'Qual a banda que você mais curte ?'
+    $scope.subtitle = 'Encontre, vídeos, fotos, links ingressos e mais!'
     $scope.myVar = 'no-class'
     $scope.myVar2 = 'no-class'
     $scope.searchText = 'Metallica'
 
+    $scope.FirstSearch = true
     $scope.TicketMasterAttractionLinks = false;
     $scope.TicketMasterResults = false
 
@@ -29,13 +32,14 @@ component('searchList', {
     }
 
     $scope.newQuery = function(newsearchText){
-
+      $scope.FirstSearch = false
       $scope.ShowSocial = false;
       $scope.YoutubeSearchResults = false;
       //Youtube Request By Input
       $scope.YoutubeNewSearchQuery = Video.query({word: newsearchText});
       $scope.YoutubeNewSearchQuery.$promise.then(function(result) {
         $scope.myVar = 'yes-class'
+        console.log(result.items)
         $scope.YoutubeSearchResults = result.items
       })
       // TicketMaster Request by input
@@ -49,7 +53,7 @@ component('searchList', {
           $scope.TicketMasterAttractionLinksInstagram = result._embedded.attractions[0].externalLinks.instagram[0].url;
           $scope.TicketMasterAttractionLinksItunes = result._embedded.attractions[0].externalLinks.itunes[0].url;
           $scope.TicketMasterAttractionLinksYoutube = result._embedded.attractions[0].externalLinks.youtube[0].url;
-          console.log(result._embedded);
+          // console.log(result._embedded);
           if( $scope.TicketMasterAttractionLinksFacebook || $scope.TicketMasterAttractionLinksHomepage || $scope.TicketMasterAttractionLinksInstagram || $scope.TicketMasterAttractionLinksItunes || $scope.TicketMasterAttractionLinksYoutube ){
             $scope.ShowSocial = true;
           }

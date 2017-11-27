@@ -4,8 +4,14 @@ angular.module('myApp').
   config(
     function(
       $locationProvider,
-      $routeProvider
+      $routeProvider,
+      $mdThemingProvider
     ){
+    
+      // Use that theme for the primary intentions
+      $mdThemingProvider.theme('default')
+        .primaryPalette('red')
+        .accentPalette('yellow');
 
       $locationProvider.html5Mode({
         enabled: true
