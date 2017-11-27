@@ -3,7 +3,7 @@
 ````
 CLONAR PROJETO
 
-
+GIT CLONE https://github.com/ddiasfront/job-frontend-developer.git
 
 `````
 
@@ -15,8 +15,8 @@ RODAR COMANDO DE INSTALAR DEPENDENCIAS COM O SISTEMA DE SUA PREFERENCIA
   2 - NPM RUN DEV
 
   CASO USE YARN 
-  1 - YARN
-  2 - YARN
+  1 - YARN INSTALL
+  2 - YARN DEV
 
 
 O SERVIDOR JÁ É LEVANTADO NOS ARQUIVOS DE PRODUÇÃO.
