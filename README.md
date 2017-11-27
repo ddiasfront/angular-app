@@ -16,8 +16,8 @@ PASTA /DIST
 ```
 │
 └───src
-│   └───img                #AÇÕES DO REDUX                
-|   └───less                  #FOOTAGE/ASSETS
+│   └───img                            ARQUIVOS IMG
+|   └───less                           ARUIVOS LESS
 |   └───js    
 |        └───app.config.js             CONFIGURAÇÃO DO ANGULAR  
 |        └───app.module.js             MODULO INICIAL APP
